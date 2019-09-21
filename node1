@@ -1,0 +1,6 @@
+install vs code
+make a js file 
+abc.js
+wite the code in it
+const a="hello world";
+console.log(a);
