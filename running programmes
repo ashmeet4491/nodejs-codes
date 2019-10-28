@@ -1,0 +1,5 @@
+const a="hello world";
+console.log(a);
+//for reading a file and writing into a file
+include the require fs module
+const fs=require('fs');
