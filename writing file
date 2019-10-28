@@ -1,0 +1,5 @@
+const fs=require('fs');
+const b=fs.readFileSync('./txt/a.txt','utf-8');
+console.log(b);
+const textout="the read file is ${b} on ${Date.now()}";
+fs.writeFileSync('txt/output.txt',textout);
