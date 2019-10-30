@@ -1,5 +1,22 @@
 const  fs=require('fs');
 fs.readFile('a.txt','utf-8',(err,data)=>
     {
-console.log(data);
+console.log(data); 
+    });
+    console.log("file read");
+    //
+output-file read will be first read.
+Output-
+file read
+content of a.txt.
+because the reading of file is done in the background.after the file is read the console.log(data) get executed.
+
+2).
+const  fs=require('fs');
+fs.readFile('a.txt','utf-8',(err,data)=>
+    {
+        fs.readFile('txt/output.txt','utf-8',(err,data1)=>
+        {
+        console.log(data1);
+        })
     });
