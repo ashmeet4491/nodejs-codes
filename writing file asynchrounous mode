@@ -10,3 +10,4 @@ fs.readFile('a.txt','utf-8',(err,data)=>
     {
      console.log("file read");
     });
+//we can also write function by function(err,data1) instead of arrow.
