@@ -1,0 +1,10 @@
+synchronous code is basically a blocking code.
+Asynchronous code is basically a non blocking code.
+Nodejs is basically a Single thread
+the code get executed in a single thread.
+so if one user is blocks  a code
+no other user will can access  a code.
+we use a Asynchronous code
+where the read file function get executed in the background
+and the other task gets executed simultaneously.
+
