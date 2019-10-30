@@ -9,5 +9,10 @@ fs.readFile('a.txt','utf-8',(err,data)=>
     fs.writeFile('txt/output2.txt',`${data}\n${data1}`,'utf-8',err=>
     {
      console.log("file read");
+  
     });
 //we can also write function by function(err,data1) instead of arrow.
+if(err)
+{
+return console.log("file not read");
+}
