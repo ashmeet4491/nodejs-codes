@@ -1,0 +1,18 @@
+const http=require('http');
+ const server= http.createServer((req,res)=>
+{
+    const req1=req.url;
+    if(req1=='/' || req1=='/overview')
+    {
+        res.end("welcome to overview page");
+    }
+    else{
+    res.end("hey from server");
+    }
+});
+console.log("jbbh");
+server.listen(8008,'127.0.0.1',()=>{
+
+    console.log("listening to port 8080");
+});
+//routing is technically getting one action to another action.
