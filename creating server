@@ -1,0 +1,15 @@
+const http=require('https');
+ const server= http.createServer((req,res)=>
+{
+    res.end("hey from server");
+
+});
+server.listen(8080,'127.0.0.1',()=>{
+
+    console.log("listening to port 8080");
+});
+or
+server.listen(8080,()=>{
+
+    console.log("listening to port 8080");
+});//no need to pass this ip adderess
