@@ -1,0 +1,34 @@
+const fs=require('fs');
+const http=require('http');
+const url=require('url');
+
+
+const server=http.createServer((req,res)=>
+{
+//res.end("hey from the server");
+console.log(req.url);
+const pathname=req.url;
+if(pathname==='/overview')
+{
+    res.end("overview page loaded");
+}
+else if(pathname=='/product')
+{
+    res.end("product page loaded");
+}
+else                                      //write head works as a status code.We always  write the res.end after the  
+                                            res.writeHead().(Basic rule)
+                                            and the content type specifies that the text we are sending is in the form of 
+                                            html.so write 'content-type':'text/html'
+{
+    res.writeHead(404,{
+        'Content-type':'text/html'
+
+    });
+    res.end("<h1>not responding<h1>");
+}
+});
+server.listen(8000,'127.0.0.1',()=>
+{
+    console.log('listening to request on port 8000');
+})
