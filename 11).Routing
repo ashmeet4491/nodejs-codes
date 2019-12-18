@@ -1,0 +1,18 @@
+routing means different actions for different command.
+for analyzing the url
+we use the module 'url'.
+const url=require('url');
+const fs=require('fs');
+const http=require('http');
+const url=require('url');
+
+
+const server=http.createServer((req,res)=>
+{
+res.end("hey from the server");
+console.log(req.url);//here it shows the request from the browser to the server.shows us the url and also it shows the 
+});                  request we are sending from the browser.for example "127.0.0.1:8000/abc" here the req.url will give us "/abc";
+server.listen(8000,'127.0.0.1',()=>
+{
+    console.log('listening to request on port 8000');
+})
