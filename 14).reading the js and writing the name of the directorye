@@ -1,0 +1,61 @@
+for example- 
+we have 
+fs.readfile('./abc/ffh');
+generally what happens the '.' refers to the current directory or can refer to the desktop so the problem can arise so we simply
+use $dir.
+${__dirname} -stands for where the current file is located.
+else if(pathname==='/api')
+{
+    fs.readFile(`${__dirname}/final/dev-data/data.json`,'utf-8',(err,data)=>//areading the data and saving it in data
+    {
+    
+        res.end(data);//in browser we always print string
+       const productdata=JSON.parse(data);//converting it to javascript when it is recieved in string 
+       console.log(productdata);
+    });
+  //  res.end('fgh');
+} 
+The whole code-
+const fs= require('fs');
+const http=require('http');
+const url=require('url');
+
+
+const server=http.createServer((req,res)=>
+{
+//res.end("hey from the server");
+console.log(req.url);
+const pathname=req.url;
+if(pathname==='/overview')
+{
+    res.end("overview page loaded");
+}
+else if(pathname=='/product')
+{
+    res.end("product page loaded");
+}
+else if(pathname==='/api')
+{
+    fs.readFile(`${__dirname}/final/dev-data/data.json`,'utf-8',(err,data)=>
+    {
+    
+        res.end(data);
+       const productdata=JSON.parse(data);
+       console.log(productdata);
+    });
+  //  res.end('fgh');
+} 
+else
+{
+    res.writeHead(404,{
+        'Content-type':'text/html'
+
+    });
+    res.end("<h1>not responding<h1>");
+}
+});
+server.listen(8000,'127.0.0.1',()=>
+{
+    console.log('listening to request on port 8000');
+})
+
