@@ -58,4 +58,5 @@ server.listen(8000,'127.0.0.1',()=>
 {
     console.log('listening to request on port 8000');
 })
-
+//the problem here arises that the file is being readed everytime there is a request.
+//so we will use synchrous file reading in the starting.
