@@ -1,0 +1,26 @@
+Simple Dependencies and development dependies
+Simple dependiences contains codes that is used to built application
+for example-express.
+install slugify using npm install slugify.
+slugify -for more readable url.
+for installing slugify just write down 
+npm install slugify.
+when we create this.it makes a new dependencies and and add the dependency to
+the pakage.json file
+development dependency is for the development of the application
+for example-the nodemon
+for installing the nodemon dependency we use 
+npm install nodemon --save-dev(dev is a short form for development)
+so basically what it does it adds this dependency and add the dependency in the devdepency in the package.json file.
+nodemon is a tool that helps us develop the node application.
+with this ,automatically it will restart the server everytime we make a change.
+for not installing the nodemon again
+we simply make it globally
+npm install nodemon --global
+so for running the file we will write nodemon "filename"
+we cannot use locally installed nodemon in a command line
+for locally we will write the code in script instead of writing it down on a command line.
+the script  contains start where we will write that.
+then write npm rum start
+but a simple method to use nodemon is write the nodemon createserver.js in command line.
+
