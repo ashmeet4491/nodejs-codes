@@ -1,0 +1,5 @@
+Node package manager is a command line interface app that manages other packages.
+go to "www.npmjs.com".
+npm init make a package.json file which is a configurational file.
+which contains the information of the project.
+
