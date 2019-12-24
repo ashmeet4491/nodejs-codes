@@ -1,0 +1,8 @@
+the first step is to installing  sluglify
+npm install slugify
+then requiring slugify in the project by using
+const slugify=require('slugify');
+const slugify=require('slugify');
+console.log(slugify('NODEFARM',{lower:true}));//make the uppercase to lowercase,OUTPUT-(nodefarm)
+console.log(slugify('NODEFARM abc',{replacement:'-'}));//replaces the space with -,OUTPUT-(NODEFARM-abc)
+console.log(slugify('NODEFARM',{remove:'E'}));//removes that character from the  word
