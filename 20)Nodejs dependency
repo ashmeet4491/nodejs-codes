@@ -1,0 +1,13 @@
+Node js has several dependencies.
+Nodejs consist of libuv and V8
+V8 is an engine that converts the javascript code to machine code that the computer can understand.
+LIBUV is an open source library having an strong focus on Asynchronous library.
+this layer gives the persmission to operate the Asynchronous io
+The two important features of node js is the event loop and the thread loop
+the event loop is for the light work
+whereas the thread loop is for the heavy work.
+libv is completely written in c++
+wheras the V8 is written in javascript and nodejs.
+so Nodejs is both written in javascript as well as a nodejs
+A thread is a sequence of instruction
+Node runs in a single thread so its easy to block the application.
