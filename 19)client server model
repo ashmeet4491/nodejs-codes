@@ -1,0 +1,26 @@
+A client makes the request and the server responses to that request.
+for example-http://www.google.com/Api
+http is a protocol
+www.google.com is a domain name 
+and Api is a resource
+www.google.com is not the name of the server.
+instead it is the name which is easy to remember.
+DNS(DOMAIN NAME SERVER)-when browser makes request to the server.the DNS maps the web address to the servers ip address.
+port no is to specify a specific service running on a server.
+The real address looks somewhat like this
+http://120.8.0.1:443
+here 120.8.0.1 is the ip address 
+and the 443 is the port no
+Once we have the real ip address the socket connection is established between the Client and the server.
+TCP- transmission control protocol
+and IP is the Internet protocol tha defines how data travels across the whole system.
+after this we  make a http request.which contain http methods headers and body(if we are sending te data).
+
+
+methods-
+GET- for requesting data
+post-for sending data
+HTTPS IS ENCRYPTED
+
+
+
