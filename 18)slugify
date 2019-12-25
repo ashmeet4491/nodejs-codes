@@ -6,3 +6,9 @@ const slugify=require('slugify');
 console.log(slugify('NODEFARM',{lower:true}));//make the uppercase to lowercase,OUTPUT-(nodefarm)
 console.log(slugify('NODEFARM abc',{replacement:'-'}));//replaces the space with -,OUTPUT-(NODEFARM-abc)
 console.log(slugify('NODEFARM',{remove:'E'}));//removes that character from the  word
+Slugify in data object
+const data=fs.readFileSync(`${__dirname}/final.dev-data,data.json`,'utf-8');
+const dataobj=JSON.parse(data);
+const slugs=dataobj.map(el=>slugify(el.productName,{lower:true}));
+console.log(slugs);
+//here the code now depends on the slugify.
