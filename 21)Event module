@@ -1,0 +1,26 @@
+const EventEmitter=require('events');//requiring the event module in a class
+  //now eventemitter is a class;
+  //making the object of event emitter
+ 
+ class server extends EventEmitter
+ {
+     constructor()
+     {
+         super();
+     }
+ }
+ const eventemit=new server();
+ eventemit.on('newserver',()=>
+ {
+     console.log("the event is successful");
+ })
+ eventemit.on('newserver',stock=>
+ {
+console.log(`${stock}`);
+ })
+ eventemit.emit("newserver",9);
+
+  here mapking the event to work
+  super is used for accessing the super class like eventEmitter
+  //talking about http module which is totally based on event
+  
