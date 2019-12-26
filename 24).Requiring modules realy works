@@ -1,0 +1,13 @@
+Why ooes we use require function?
+where does the require function comes in pictures?
+we can load three kinds of modules in nodejs
+1).Core module('http')
+2).Developer module('./lib/controller')
+3)3rd party module from npm('express')
+here the node automatically finds the core modules load it 
+the developers module starts with a '.'
+
+each module having the private function is crucial
+
+
+
