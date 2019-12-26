@@ -1,0 +1,23 @@
+Streams-used to read the data chunks by chunks without completing the whole read and write operation fully so without
+keeping all the data in memory
+like for example in netflix and youtube 
+without waiting for the whole file to read the processing is done piece by piece
+so you start watching even before the entire file is downloaded
+so streamhandling large amounts are of data.
+
+streaming makes the data processing more efficient in terms of memory
+There are four types of streams in nodejs
+1).Readble streams 
+2).Writable streams
+3).Duplex streams
+4).Transform streams
+Readable streams are the streams to which we consume data
+Writable streams are the ones to which we write data
+Streams are the instances of the Eventemitter  class.
+Important event of  readable stream are data and end
+Important function of Readable streams are pipe and read event
+Important events are drain and finish
+Important functions are write and end
+Duplex streams are those streams which are both writable as well as readable at the same time
+Transform steam are those stream which are used to modify the data.
+
