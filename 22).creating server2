@@ -1,0 +1,18 @@
+const http=require('http');
+const Eventemitter=require('events');
+
+const server=http.createServer();
+server.on('request',(req,res)=>
+{
+    console.log("request recieved");
+    res.end("request recieved");
+})
+
+server.on('close',()=>
+{
+    console.log("closed");
+})
+server.listen(8000,"127.0.0.1",()=>
+{
+    console.log("waiting for request");
+})
