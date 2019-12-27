@@ -9,5 +9,6 @@ the developers module starts with a '.'
 
 each module having the private function is crucial
 
+we use module.export to export a function
 
 
