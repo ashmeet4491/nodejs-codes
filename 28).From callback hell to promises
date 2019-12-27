@@ -1,0 +1,27 @@
+get method here returns a promise as soon as we start the request
+we will use "then" to get a promise from the node
+A pending promise and a resolved promise.
+when we get the request it becomes a resolved promise
+but then only handles fulfilling promises it doesnot handles the normal promises
+so we will use a catch over here for handling the error
+here we are using "then"
+const fs=require('fs');
+const superagent=require('superagent');
+
+fs.readFile(`${__dirname}/dog.txt`,(err,data)=>
+{
+    if(err)
+    console.log(err.message);
+    else{
+    superagent.get(`https://dog.ceo/api/breed/${data}/images/random`).then(res=>
+    {
+     fs.writeFile(`${__dirname}/output.txt`,res.body.message,(err)=>
+     {
+         if(err)
+         console.log(err.message);
+         else
+         console.log('file written successfully');
+     })
+    })
+}
+})
