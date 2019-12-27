@@ -19,10 +19,22 @@ else{
 superagent.get(`https://dog.ceo/api/breed/${data1}/images/random
 `).end((err,res)=>
 {
+    if(err)
+    {
+        console.log(err.message);
+
+    }
     console.log(res.body.message);
+    fs.writeFile('dog-image2.txt',res.body.message,err=>
+{
+    console.log("Random dog image saves to file");
+})
 });
+
     
 })
+//calbacks are difficult to understand so thats why we use here is a promises.which i will write in next code.
+
 //here we are having a callback function inside other callback function
 //superagent is algo used for sending and recieving requests.
 
