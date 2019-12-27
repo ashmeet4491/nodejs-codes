@@ -1,0 +1,17 @@
+Make the file named as test-module3.js and write the code
+console.log("Hello from the function");
+module.exports=()=>
+{
+    console.log("Lock  this beautifule object");
+}
+make another  file named as modules.js
+require("./test-module3")();
+require("./test-module3")();
+require("./test-module3")();
+here the output it gives is 
+Hello from the function
+Lock  this beautifule object
+Lock  this beautifule object
+Lock  this beautifule object
+because the file is loaded only once and the caching is going on in this module
+so the value is saved somewhere and called everytime when a function is called
