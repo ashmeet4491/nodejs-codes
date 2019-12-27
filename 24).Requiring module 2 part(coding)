@@ -1,0 +1,28 @@
+Making a calculator application
+we shouls first make a file modules.js
+const C=require("./test-module1");
+const cal1=new C();
+console.log(cal1.add(9,5));
+We should make the second file named as test-module1.js
+class calculator
+{
+    add(a,b)
+    {
+        return a+b;
+    }
+    multiply(a,b)
+    {
+        return a*b;
+    }
+    subtract(a,b)
+    {
+        return a-b;
+    }
+    divide(a,b)
+    {
+        
+            return a/b;
+        
+    }
+}
+module.exports=calculator;
