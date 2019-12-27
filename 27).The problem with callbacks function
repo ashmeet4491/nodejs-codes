@@ -1,0 +1,28 @@
+we will make a file of name known as dog.txt
+where we are supposed to retrieve the name of the dog and acoording to the dog breed assign the image
+and save that random image in a text file
+so here we are using the API known as the dog.ceo
+here we are going to use superagent 
+so to install superagent we will use 
+npm install superagent
+const fs=require('fs');
+const superagent=require('superagent'); 
+const read=fs.readFile(`${__dirname}/dog.txt`,(err,data1)=>
+{
+if(err)
+{
+    console.log(`${err}`);
+}
+else{
+        console.log(`Breed:${data1}`);
+}
+superagent.get(`https://dog.ceo/api/breed/${data1}/images/random
+`).end((err,res)=>
+{
+    console.log(res.body.message);
+});
+    
+})
+//here we are having a callback function inside other callback function
+//superagent is algo used for sending and recieving requests.
+
