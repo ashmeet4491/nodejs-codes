@@ -1,0 +1,44 @@
+it will make our code a lot more easier
+for async await,we need to create a async await function
+Simplest and easiest methods to handles the promises using async and await function
+const fs=require('fs');
+const superagent=require('superagent');
+const file_read=file=>
+{
+    return new Promise((resolve,reject)=>{
+fs.readFile(file,(err,data)=>
+    {
+      if(err)
+      reject('not able to read');
+      resolve(data);
+      
+    })
+})
+}
+const write_file=(file,data)=>
+{
+    return new Promise((resolve,reject)=>
+    {
+      fs.writeFile(file,data,err=>{
+          if(err)
+          reject('not ');
+          resolve('done');
+      })
+    })
+}
+const getDogPic=async()=>                              //this is the special function that is asynchronous
+{      
+    try{                                                 //it does the work without blocking event loop
+const data= await file_read(`${__dirname}/dog.txt`);
+                                                                            //so basically the code keeps on running
+  console.log(`breed:${data}`);   
+  const res=await superagent(`https://dog.ceo/api/breed/hound/images/random`);                                                 //the await here makes the function to wait until the
+     console.log(res.body.message);                                                                       // promise is returned                                                     
+         await write_file(`${__dirname}/dog5.txt`,res.body.message);
+        }
+        catch(err)
+            {
+             console.log(err);
+            }                                                                    //it also automatically returns a promise
+}
+getDogPic();
