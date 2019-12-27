@@ -1,0 +1,8 @@
+makes a test-module2.js file and write the code
+exports.add=(a,b)=>(a+b);
+exports.sub=(a,b)=>(a-b);
+exports.mul=(a,b)=>a*b;
+exports.divide=(a,b)=>a/b;
+makes another file names module.js and require the test-module2.js  in that file
+const C1=require("./test-module2");
+console.log(C1.sub(9,4));
