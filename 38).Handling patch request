@@ -1,0 +1,31 @@
+/*patch request is to update data*/
+const express=require('express');
+const fs=require('fs');
+const app=express();
+const file_read=fs.readFileSync(`${__dirname}/tour-simple.json`);
+const file_read2=JSON.parse(file_read);
+const port=3000;
+app.patch('/api/v1/tours/:id',(req,res)=>
+{
+    const id=req.param.id*1;
+    if(id>file_read2.length)
+    {
+        res.status(400).json({
+            status:"error",
+            message:"file could not be sent"
+        })
+    }
+else
+{
+    res.status(200).json(
+        {
+            status:"done",
+            data:"<updated document here>"
+        })
+
+}
+})
+app.listen(port,()=>
+{
+console.log('connecting to the port');
+})
