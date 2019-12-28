@@ -1,0 +1,75 @@
+req.params is a value that assigns the value to the defined parameters
+for defining a parametres we write it like :
+and for the making it optional we use quesionmark
+const express=require('express');
+const fs=require('fs');
+ 
+const app=express();
+app.use(express.json());//express .json is a middleware that can modify the given data
+const port=3000;
+const data=fs.readFileSync(`${__dirname}/tour-simple.json`,'utf-8');
+const read_json=JSON.parse(data);
+
+app.get('/api/v1/tours',(req,res)=>
+{
+  res.status(200).json(
+      {
+        status:true,
+        result:read_json.length,
+          data:{
+          tour:read_json
+          }
+    });
+})
+app.get('/api/v1/tours/:id?/:name?/:duration?',(req,res)=>
+{
+    console.log(req.params);
+    const id=req.params.id*1;
+    if(id>read_json.length)
+    {
+        res.status(400).json(
+            {
+                status:'fail',
+                message:"the id is invalid"
+            })
+    }
+    else{
+     const read= read_json.find(el=>el.id===id);  
+     res.status(200).json(
+         {
+             status:true,
+             data:
+             {
+                 tour:read
+             }
+         })                              //it is a way of converting the string to integer 
+}})
+app.post('/api/v1/tours',(req,res)=>
+{
+  //  console.log(req.body);
+  const newid=read_json[read_json.length-1].id+1;
+   const newtour=Object.assign({ id:newid },req.body);
+   read_json.push(newtour);
+   fs.writeFile(`${__dirname}/tour-simple.json`,JSON.stringify(read_json),err=>
+   {
+       res.status(200).json(
+           {
+               status:true,
+               data:
+               {
+                   read_json:newtour
+               }
+
+           });
+   })
+
+    
+})
+
+app.listen(port,()=>
+{
+    console.log("listening at port 3000");
+    
+
+    
+})
