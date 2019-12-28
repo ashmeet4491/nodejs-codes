@@ -1,0 +1,32 @@
+Application programming interface is a piece of software that is used by another piece of software in order to allow the application to
+interact with each other.
+it is not dnly use for sending and recieving data from the server to the client.
+like for example we have a Api KNOWN AS 'fs' in nodesjs it is also used to read the file
+REST is representational state transfer
+We will bulid the Api following the rest architecture
+for building the restful API we just need to follow the following principals
+1).Seperate API into logical resources
+2).Expose structured based URL
+3).it shouls use the 'http method ' and not the URL
+4).data dend from the client to serverand data send from the server to the client must be in JSON format
+5).they must be stateless
+A post request is used to send t e data from the client
+Important
+if a /tour is accessed using get method we send data to the  client
+but if same /tour is accressed with post data to come in from the client
+there are another method such as put and patch
+the major difference between put and patch is 
+In put the client is supposed to send entire updated object
+while in patch we send only that data that has been updated
+Delete is also a request and the client should be authenticated  
+so that the client can perform CRUD operations
+Create,read,Update and delete operation
+create is performed by GET
+read is performed by POST 
+Update is performed by put and patch
+Delete is performed by delete
+JSON IS A LIGHT WEIGHT DATA INTERCHANGE FORMAT which is heavily used by web API coded in any language
+when we ar sending the response to the client we are  we ahve to format the json using jsend
+it should be stateless means that all states are handled on the client side and not on the server
+and the state refers to data that might change over time
+example of state like the user is logged in 
