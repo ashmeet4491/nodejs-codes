@@ -1,0 +1,45 @@
+it also our live easier by taking some of the complexity from code 
+it works as the same as 'http' hence the code remain same in it
+Postman makes the API testing a lot more easier
+const express=require('express');
+const app=express()/*here express is a function  which on calling  
+a bunch of methods to our app variable.*/
+
+app.get('/',(req,res)=>
+{
+res.send('hey from the user');
+res.status(200).send('hey from the user');/*here we can also specify the status by using*/ 
+})
+const port=3000;
+app.listen(port,()=>
+{
+    console.log(`app running on port ${port}`);
+})   
+                             //app.listen is basically to call up a server
+
+also we can send the json object
+const express=require('express');
+const app=express()/*here express is a function  which on calling  
+a bunch of methods to our app variable.*/
+
+
+app.get('/',(req,res)=>
+{
+//res.send('hey from the user');
+//res.status(200).send('hey from the user');
+res.status(404).json({message:'hey from the user',object:'best'});/*here we can also specify the status by using*/ 
+})
+
+app.post('/',(req,res)=>
+{
+    res.send('you can post this request');
+})
+const port=3000;
+app.listen(port,()=>
+{
+    console.log(`app running on port ${port}`);
+})   
+                             //app.listen is basically to call up a server
+
+
+
