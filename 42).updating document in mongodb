@@ -1,0 +1,5 @@
+we will use the updateOne in it
+and we will pass two arguments in it
+the first argument is the filter argument(which document we want to select) and the second one is the updation argument
+db.tours.updateOne({rating:4.8},{$set:{price:78}}) 
+here we updating the price where rating is 4.8
