@@ -1,0 +1,48 @@
+MongoDB is a Database and its a NO sql database
+it contains one or more collections
+each collection can contain one or more document(rows)
+A collection is basically a table
+it provides the scalibility and flexity
+it is a document based database
+which has field value pair like json
+it is a very performant database system
+free and opensource database
+MongoDb  use a data format called BSON which is same as JSON
+but it will be having a DATATYPE
+Embedded document is an important feature in mongodb
+which is not present in any of the relational database
+the max size of mongodb document is 16mb but this might increase in the future
+each document contains a primary key
+this id is automatically generated each time 
+Installing a mongodb community server
+go to the file named monogob/server/4.2/bin(copy the whole path)
+run cd path in cmd
+run dir 
+run\.mongod.exe(it will start the server)
+and give result that 
+run\.mongo.exe(it will be automtically connected to the port)
+how to run the mongoserver from another directory
+suppose we dont want to specify the path and we want to run it anywhere
+then we use environment variables
+we have to set up the path
+now we can access it from anywhere 
+write mongod.exe(it will start the server)
+write mongo  has he other terminal 
+now mongodb has been connected to our terminal 
+so write  mongo
+then cls for clear
+now we are creating a database
+use <database> // u
+use is basically used to switch to a databse and if the database do not exist it automatically creates them
+here we are using use natour-test
+so now we have to specify a collection before inserting a document 
+so we will use here
+db.tours.insertOne({name:'the forest hike',price:329,rating:4.7})//here insert one because we are inserting one document
+//the insert many converts the Json object to json or the bson
+for finding the document e will write 
+db.tours.find()//it will return the document
+Mongodb would automatically creates the id when we insert a document
+show dbs is a command which we automatically shows all the databses
+show collection// it will return the name of the collections
+for quitting the mongo shell type quit()
+
