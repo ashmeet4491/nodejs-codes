@@ -1,0 +1,4 @@
+show dbs
+use natours-test
+db.tours.insertMany([{name:"Ashmeet kaur" ,class:"ccvt"},{name:"priyanka",class:"college",section:"ccvt b1"}])
+db.tours.find()
