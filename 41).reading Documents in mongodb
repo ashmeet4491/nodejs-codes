@@ -1,0 +1,20 @@
+show dbs
+use natour-test
+to find the array of person having name=the forest hiker
+db.tours.find({name:"The forest hiker"})
+if u want to find the document having price less than 500
+db.tours.find({price:{$lte:500}})
+Searching for two search criteria at the same time 
+lte here stands for less than or equal
+lt stands for less than
+for two simultaneous search we write it like
+db.tours.find({price:{$lt:500}},{rating:{$gte:4.8}})
+searching for or condition in the given conditions
+db.tours.find({$or:[{price:{$lt:500}},{rating:{$gte:4.8}}]}) 
+An or operator accepts an array of conditions
+if we want the name to be displayed only
+db.tours.find({$or:[{price:{$lt:500}},{rating:{$gte:4.8}}]},{name:1}
+if u want to display only the names then
+ db.tours.find({},{name:1})
+
+
