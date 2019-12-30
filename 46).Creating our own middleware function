@@ -1,0 +1,46 @@
+Middleware is used to manipulate the the request or the response objects
+we used express.json for the request
+the order of the middleware is the order in which they are executed
+in order to use middleware we generally use app.use(expess.json())
+express.json() is a function that returns the method we add to the middleware stack
+for a middleware we have the a req and a response
+but for making our own middleware we have a third argument also which is called 
+next is very important because without next argument we wont be able to send the 
+request to the client side
+the middleware should always be there before the route function
+the order matters alot in express
+We can also manupulate req object ussing miiddleware
+Making of the own middleware
+const express=require('express');
+const app=express();
+const fs=require('fs');
+const file=fs.readFileSync(`${__dirname}/tour-simple.json`);
+const file_read=JSON.parse(file);
+app.use(express.json());
+app.use((req,res,next)=>
+{
+console.log('hello from the middleware');
+next();
+})
+app.use((req,res,next)=>
+{
+    req.requestTime=new Date().toISOString();
+    
+    next();
+
+
+})
+app.get('/app',(req,res)=>
+{
+    console.log(req.requestTime);
+        res.status(400).json({
+            status:"error",
+            requestedat:req.requestTime,
+            message:"file could not be sent"
+        })
+
+})
+app.listen(3000,()=>
+{
+    console.log('listening');
+})
