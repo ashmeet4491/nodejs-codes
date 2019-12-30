@@ -1,0 +1,7 @@
+Delete one will work for the first document matching
+while delete many will work for many document matching
+ db.tours.deleteMany({rating:{$lte:4.8}})
+ for deleting many rows as possible  
+  db.tours.deleteMany({rating:{$lte:4.8}})
+  for deleting all documents
+   db.tours.deleteMany({})
