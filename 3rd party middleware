@@ -1,0 +1,50 @@
+so here we are going to use a popular middleware known as a morgan.
+a middleware which is going to allow to see requested data in the console
+We need to install it npm install morgan
+it is not a development dependency
+it a normal deoendency
+morgon is a middleware that works as a other same  middleware
+using morgan will return a function similar to app.use
+this function returns a morgan function
+this middleware automatically prints the requested data 
+it sends the http method,the url,the status code,the time it took to send back the response and the size of the response
+const express=require('express');
+const app=express();
+const fs=require('fs');
+const morgan=require('morgan');
+const file=fs.readFileSync(`${__dirname}/tour-simple.json`);
+const file_read=JSON.parse(file);
+app.use(express.json());
+//1)MIDDLEWARES
+app.use(morgan('dev'));//here we can also write tiny .its just a format
+app.use((req,res,next)=>
+{
+console.log('hello from the middleware');
+next();
+})
+app.use((req,res,next)=>
+{
+    req.requestTime=new Date().toISOString();
+    
+    next();
+
+
+})
+//2).ROUTE HANDLERS
+app.get('/app',(req,res)=>
+{
+   console.log(req.requestTime);
+        res.status(400).json({
+            status:"error",
+            requestedat:req.requestTime,
+            message:"file could not be sent"
+        })
+
+})
+//3)STARTING THE SERVER
+app.listen(3000,()=>
+{
+    console.log('listening');
+})
+
+for futher important information visit www.expressjs.com
