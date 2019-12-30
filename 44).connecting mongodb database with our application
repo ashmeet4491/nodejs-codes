@@ -1,0 +1,2 @@
+so to connect our express application to  the  mongodb databse we will use the library which is mongoose
+which makes working with mongodb really very easy
