@@ -1,0 +1,20 @@
+we are going to use a which e hosted remote service hosted on a service which is called ATLAS
+which is owned by the same company which owns mongodb
+we will basically use a cloud service which is called Atlas
+it will manage and scale the databses now its not our reponsibility
+it is always advisable to have the data on the cloud 
+so that we can access it from anywhere
+so here we going to use remote databases instead of messing it with local databases
+so  the internet is nessary for a hosted applicationne
+create a new project in Atlas 
+and then creating a cluster for the new project
+connecting that to our mongodb campas
+so that if we are adding something to our mongodb campus 
+it will be automatically added to our cloud Atlas
+now we have to allow access to this cluster to everywhere
+and connect to the mongo shell as well
+and next is to coonect our shell to the database application and now this way  
+can access our cloud  databses
+
+
+ 
