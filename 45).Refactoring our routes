@@ -1,0 +1,20 @@
+const express=require('express');
+const app=express()/*here express is a function  which on calling  
+a bunch of methods to our app variable.*/
+
+const display=(req,res)=>
+{
+    res.status(404).json({message:'hey from the user',object:'best'});
+}
+//app.get('/',display);
+
+//app.post('/',display);
+app.route('/').get(display).post(display);
+const port=3000;
+app.listen(port,()=>
+{
+    console.log(`app running on port ${port}`);
+})   
+                             //app.listen is basically to call up a server
+
+
