@@ -1,0 +1,10 @@
+const tourRouter=express.Router();
+app.use('/api/v1/tours', tourRouter);
+tourRouter.route('/').get(getAllTours).post(createtour);
+here the tourrouter is actually a middleware
+now whenever this request will arrive this
+we are suppose to use app.use after the 
+this is called mounting a new router on a rote basically
+app.use()//this statement is suppose to come after the main decleration statement
+//this is called mounting of the users
+
