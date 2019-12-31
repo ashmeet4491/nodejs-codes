@@ -1,0 +1,7 @@
+this file does it to scan the code and tells us the bad code practice
+it will highliht the error
+install eslint  extension
+and then install prettier extension
+npm i eslint prettier eslint-config-prettier eslint-plugin-prettier 
+eslint-config-airbnb eslint-plugin-node eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --save-dev
+this is for the extension
