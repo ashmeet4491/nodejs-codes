@@ -1,0 +1,3 @@
+there is a driver known as mongoose which helps our mongodb to connect with application
+install mongoose
+npm install mongoose@5 ...keep in mind that while installing this package donot name this folder mongoose
