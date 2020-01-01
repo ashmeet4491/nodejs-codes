@@ -1,0 +1,8 @@
+env is a environment variable wh
+so ich is set by nodejs
+console.log(app.get('env'));
+it gives the development
+it is used to define a environment in which a node app is running
+it is also located at process.env
+Nodeenv defined the variable that whether we are in production or we are in development
+Create a configuration file config.env
