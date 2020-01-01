@@ -1,0 +1,129 @@
+we make the 3 files over here
+first file is app6.js
+//const fs=require('fs');
+const express=require('express');
+const morgan=require('morgan');
+const tour_router=require('./routes/tours');
+const user_router=require('./routes/users');
+const app=express(); 
+app.use(express.json());
+app.use(morgan('dev'));
+
+
+app.use('/api/v1/tours',tour_router);
+app.use('api/v1/users',user_router);
+const port=3000;
+app.listen(port,()=>
+{
+    console.log('server is running');
+})
+//
+//
+//
+//
+//
+the second file "tours.js"
+const express=require('express');
+const fs=require('fs');
+const read=fs.readFileSync(`${__dirname}/../tour-simple.json`);
+const file_read=JSON.parse(read);
+const get_all_tours=(req,res)=>
+{
+    res.status(200).json(
+        {
+            status:"true",
+            data:
+            {
+                display:file_read
+            }
+        })
+}
+const get_one_tour=(req,res)=>
+{
+    console.log(req.params);
+    const id=req.params.id * 1;
+    const tour=file_read.find(el=>el.id==id);
+    if(id>file_read.length)
+    {
+        res.status(400).json(
+            {
+               status:"false",
+               message:"Invalid id"
+
+            })
+
+    }
+    else
+    {
+        res.status(200).json(
+        {
+          status:"true",
+          data:
+          {
+            tour
+          }
+
+
+
+        })
+    }
+}
+const post_tours=(req,res)=>
+{
+    const newid=file_read[file_read.length-1].id+1;
+    const new_tour= Object.assign({id : newid},req.body);
+    file_read.push(new_tour);
+    fs.writeFile(`${__dirname}/tour-simple.json`,JSON.stringify(file_read),err=>
+    {
+        if(err){
+        res.status(400).json(
+            {
+                status:"true",
+                message:"file cannot be read"
+            })
+     }
+     else
+     {
+         res.status(200).json(
+             {
+                 status:"true",
+                 message:"file written"
+             })
+     } 
+    })
+}
+
+
+
+
+const router=express.Router();
+router.route('/').get(get_all_tours).post(post_tours);/*tpurrouter acts as a middleware*/
+router.route('/:id').get(get_one_tour);
+module.exports=router;
+//
+//
+//
+//
+//
+the 3 rd file is users.js
+const fs=require('fs');
+const read=fs.readFileSync(`${__dirname}/../tour-simple.json`);
+const file_read=JSON.parse(read);
+const express=require('express');
+const get_all_users=(req,res)=>
+{
+    res.send('this is not implemented');
+}
+const post_users=(req,res)=>
+{
+    res.send('this is not implemented');
+}
+const get_one_user=(req,res)=>
+{
+    res.send('this is not implemented');
+}
+
+const router=express.Router();
+router.route('/').get(get_all_users).post(post_users);
+router.route('/:id').get(get_one_user);
+module.exports=router;
