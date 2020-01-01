@@ -1,0 +1,6 @@
+the middleware will be running when there is a parameter
+router.param('id',(req,res,next,val)=>
+{
+console.log(`${val}`);
+next();
+})
