@@ -1,0 +1,81 @@
+const fs=require('fs');
+const express=require('express');
+const app=express();
+app.use(express.json());
+const read=fs.readFileSync(`${__dirname}/tour-simple.json`);
+const file_read=JSON.parse(read);
+app.get('/api/v1/tours',(req,res)=>
+{
+    res.status(200).json(
+        {
+            status:"true",
+            data:
+            {
+                display:file_read
+            }
+        })
+});
+app.get('/api/v1/tours/:id',(req,res)=>
+{
+    console.log(req.params);
+    const id=req.params.id * 1;
+    const tour=file_read.find(el=>el.id==id);
+    if(id>file_read.length)
+    {
+        res.status(400).json(
+            {
+               status:"false",
+               message:"Invalid id"
+
+            })
+
+    }
+    else
+    {
+        res.status(200).json(
+        {
+          status:"true",
+          data:
+          {
+            tour
+          }
+
+
+
+        })
+    }
+})
+app.post('/api/v1/tours',(req,res)=>
+{
+    const newid=file_read[file_read.length-1].id+1;
+    const new_tour= Object.assign({id : newid},req.body);
+    file_read.push(new_tour);
+    fs.writeFile(`${__dirname}/tour-simple.json`,JSON.stringify(file_read),err=>
+    {
+        if(err){
+        res.status(400).json(
+            {
+                status:"true",
+                message:"file cannot be read"
+            })
+     }
+     else
+     {
+         res.status(200).json(
+             {
+                 status:"true",
+                 message:"file written"
+             })
+     } 
+    })
+})
+
+//app.get('api/v1/tours/:id',(req,res)=>
+//{
+    
+//})
+const port=3000;
+app.listen(port,()=>
+{
+    console.log('server is running');
+})
