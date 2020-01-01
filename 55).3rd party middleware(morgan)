@@ -1,0 +1,88 @@
+npm install morgan
+development life easier
+its not development dependency
+its a normal dependency
+so it returns a same function that is returned by a normal owm middleware
+we get the http method ,url,status code,the time it took and the size in bytes
+const fs=require('fs');
+const express=require('express');
+const morgan=require('morgan');
+const app=express();
+app.use(express.json());
+app.use(morgan('dev'));
+const read=fs.readFileSync(`${__dirname}/tour-simple.json`);
+const file_read=JSON.parse(read);
+const get_all_tours=(req,res)=>
+{
+    res.status(200).json(
+        {
+            status:"true",
+            data:
+            {
+                display:file_read
+            }
+        })
+}
+const get_one_tour=(req,res)=>
+{
+    console.log(req.params);
+    const id=req.params.id * 1;
+    const tour=file_read.find(el=>el.id==id);
+    if(id>file_read.length)
+    {
+        res.status(400).json(
+            {
+               status:"false",
+               message:"Invalid id"
+
+            })
+
+    }
+    else
+    {
+        res.status(200).json(
+        {
+          status:"true",
+          data:
+          {
+            tour
+          }
+
+
+
+        })
+    }
+}
+const post_tours=(req,res)=>
+{
+    const newid=file_read[file_read.length-1].id+1;
+    const new_tour= Object.assign({id : newid},req.body);
+    file_read.push(new_tour);
+    fs.writeFile(`${__dirname}/tour-simple.json`,JSON.stringify(file_read),err=>
+    {
+        if(err){
+        res.status(400).json(
+            {
+                status:"true",
+                message:"file cannot be read"
+            })
+     }
+     else
+     {
+         res.status(200).json(
+             {
+                 status:"true",
+                 message:"file written"
+             })
+     } 
+    })
+}
+
+app.route('/api/v1/tours').get(get_all_tours).post(post_tours);
+app.route('/api/v1/tours/:id').get(get_one_tour);
+
+const port=3000;
+app.listen(port,()=>
+{
+    console.log('server is running');
+})
