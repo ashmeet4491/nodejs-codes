@@ -1,0 +1,44 @@
+Mongoose is an object data modelling for mongodb and nodejs application
+so we are going to create tour schema 
+const tour_Schema=new mongoose.Schema(
+        {
+            name:String,
+            rating:Number,
+            price:Number
+        })
+//
+//
+//
+//
+//
+const tour_schema=new mongoose.Schema(
+            {
+                name:
+                {
+                    type:String,
+                    required:[true,'A tour name must have a string']
+                },
+                rating:
+                {
+                    type:Number,
+                    default:4.5,
+                    unique:true
+                },
+                price:
+                {
+                    type:Number,
+                    required:[true,'a tour price  must have a Number']
+                }
+
+        })
+        
+        required can contain two field the first one is true(because the field is required)
+        and the second one is message that will be displayed when field is blank
+        //
+        //
+        //
+        //
+        //
+        MODEL CREATION
+         const Tour=mongoose.model('Tour',tour_schema);
+        
