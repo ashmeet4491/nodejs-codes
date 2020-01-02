@@ -1,0 +1,8 @@
+MVC(Model Controller View Architecture)
+first the request will hit the routers
+it then sends the request to the correct handeler function
+then the controller sends it to the particular model
+after getting back the response the controller might send back the data
+sometimes the controller select one of the template and render data onto it
+then the website will be sent as as the response then 
+
