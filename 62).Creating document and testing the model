@@ -1,0 +1,77 @@
+We create model in order to create the documents
+ const Tour=mongoose.model('Tour',tour_schema);
+       const tour_doc= new Tour(
+        {                               /*the tour_doc that we have created is a instance of 
+                                          Tour Model.It has a couple of method that we can use 
+                                          for interating with the database */
+         name:"Priyanka",
+         rating:4.7,
+         price:447
+        })
+        
+        
+        
+        
+        const mongoose=require('mongoose');
+const dotenv=require('dotenv');
+const server=require('./app6');
+const port=3000;
+dotenv.config({path:'./config.env'});
+const DB=process.env.DATABASE_CLOUD.replace('<password>',process.env.DATABASE_PASSWORD);
+mongoose.connect(DB,{
+    useNewUrlParser:true,
+    useCreateIndex:true,
+    useFindAndModify:false
+}).then(con=>
+    {
+        console.log(con.connections);
+        console.log('DB connection success');
+    })
+ /*   const tour_Schema=new mongoose.Schema(
+        {
+            name:String,
+            rating:Number,
+            price:Number
+        })*/
+
+        const tour_schema=new mongoose.Schema(
+            {
+                name:
+                {
+                    type:String,
+                    required:[true,'A tour name must have a string']
+                },
+                rating:
+                {
+                    type:Number,
+                    default:4.5,
+                    unique:true
+                },
+                price:
+                {
+                    type:Number,
+                    required:[true,'a tour price  must have a Number']
+                }
+
+        })
+        const Tour=mongoose.model('Tour',tour_schema);
+       const tour_doc= new Tour(
+        {                               /*the tour_doc that we have created is a instance of 
+                                          Tour Model.It has a couple of method that we can use 
+                                          for interating with the database */
+         name:"Priyanka",
+         rating:4.7,
+         price:447
+        })
+        tour_doc.save().then(doc=>
+            {
+                console.log(doc);
+            }).catch(err=>
+                {
+                    console.log('ERROR',err);
+                })           /*this save method is for saving the document on the
+                                     it will return the promise that we will database*/
+server.listen(port,()=>           
+{
+    console.log('server is running');
+})
