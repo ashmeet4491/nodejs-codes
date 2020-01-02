@@ -1,0 +1,70 @@
+we will make a config.env file (where we will save the database related information)
+config.env
+//
+//
+//
+NODE_ENV=development
+PORT=3000
+DATABASE_USERNAME=Ashmeet
+DATABASE_PASSWORD=nancy4491
+DATABASE_CLOUD=mongodb+srv://Ashmeet:<password>@cluster0-dx4pl.mongodb.net/natours?retryWrites=true&w=majority
+DATABASE_LOCAL=mongodb://localhost:27017/natours
+//
+//
+//
+so after that install a software thats called mongoose that is used to connect our application to the database
+npm i mongoose@5(because 5th version is stable)
+//
+//
+now requiring the mongoose package in server.js
+const mongoose=require('mongoose');
+const dotenv=require('dotenv');
+const server=require('./app6');
+const port=3000;
+mongoose.connect();
+dotenv.config({path:'./config.env'});
+server.listen(port,()=>
+{
+    console.log('server is running');
+})
+//
+//
+//
+//
+//
+const DB=process.env.DATABASE_CLOUD.replace('<password>',process.env.DATABASE_PASSWORD);
+mongoose.connect(DB,{
+    useNewUrlParser:true,
+    useCreateIndex:true,
+    useFindAndModify:false
+});
+now the connect is going to return a promise 
+so we have to 
+
+//
+//
+//
+//
+//
+//
+//
+connection successfully established with the atlas
+const mongoose=require('mongoose');
+const dotenv=require('dotenv');
+const server=require('./app6');
+const port=3000;
+dotenv.config({path:'./config.env'});
+const DB=process.env.DATABASE_CLOUD.replace('<password>',process.env.DATABASE_PASSWORD);
+mongoose.connect(DB,{
+    useNewUrlParser:true,
+    useCreateIndex:true,
+    useFindAndModify:false
+}).then(con=>
+    {
+        console.log(con.connections);
+        console.log('DB connection success');
+    })
+server.listen(port,()=>
+{
+    console.log('server is running');
+})
