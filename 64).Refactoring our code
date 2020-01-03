@@ -1,0 +1,37 @@
+there is no use of using a id known as a middleware known as check id because mongodb will itself give the error if are fetching wrong id
+ANOTHER way of creating document  that is a way easier than we didi before
+so here we will use the method create for 
+we will use here 
+Tour.create(
+{
+})
+and this will return a promise as well
+
+exports.post_tours= async (req,res)=>
+{
+    try{
+    const new_tour= await Tour.create(req.body);
+    res.status(200).json(
+        {
+            status:"success",
+            data:
+            {
+              new_tour
+            }
+        })
+    }
+    catch(err)
+    {
+        res.status(400).json(
+            {
+                status:"fail",
+                message:
+                {
+                    err
+                }
+            })
+    }
+}
+if we have not defined something in the schema and we are putting it on the body in the sending th post request then 
+there will be a not be  a problem but that will not be saved in a cloud database
+
