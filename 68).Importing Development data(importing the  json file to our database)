@@ -1,0 +1,65 @@
+so here we are going to create a module that will load the data from the json to the datbase
+//const Tour=require('./../models/tour_model1');
+const mongoose=require('mongoose');
+const dotenv=require('dotenv');
+const fs=require('fs');
+const express=require('express');
+const app=express();
+//const server=require('./app8');
+const Tour=require('./models/tour_model1');
+const port=3000;
+dotenv.config({path:'./config.env'});
+const DB=process.env.DATABASE_CLOUD.replace('<password>',process.env.DATABASE_PASSWORD);
+mongoose.connect(DB,{
+    useNewUrlParser:true,
+    useCreateIndex:true,
+    useFindAndModify:false
+}).then(con=>
+    {
+        console.log(con.connections);
+        console.log('DB connection success');
+    })
+ const read_file=fs.readFileSync(`${__dirname}/tour-simple.json`,'utf-8');
+ const tour=JSON.parse(read_file);
+ //Making an import function
+ const import_data=async()=>
+ {
+     try
+     {
+            await Tour.create(tour);
+            console.log('data success');
+
+     }
+     catch(err)
+     {
+         console.log(err);
+     }
+ }
+ //Delete all data from collection
+ const delete_data=async()=>
+ {
+    try
+    {
+           await Tour.deleteMany();
+           console.log('data success');
+           process.exit();//process.exit is for stopping the application
+
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+ }
+console.log(process.argv);
+if(process.argv[2]=='--import')
+{
+    import_data();
+}
+if(process.argv[2]=='--delete')
+{
+    delete_data();
+}
+app.listen(port,()=>           
+{
+    console.log('server is running');
+})
