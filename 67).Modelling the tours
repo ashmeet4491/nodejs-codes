@@ -1,0 +1,63 @@
+const tour_schema=new mongoose.Schema(
+            {
+                name:
+                {
+                    type:String,
+                    required:[true,'A tour name must have a string']
+                },
+                duration:
+                {
+                  type:Number,
+                  required:[true,'A tour must have a duration' ]
+                },
+                
+                maxGroupSize:
+                {
+                    type:Number,
+                    required:[true,'a tour must have a group size']
+                },
+                difficulty:
+                {
+                    type:String,
+                    required:[true,'A tour must have a difficulty']
+                },
+                ratingsAverage:
+                {
+                    type:Number,
+                    default:4.5
+
+                },
+                ratingsQuantity:
+                {
+                    type:Number,
+                    default:0
+                },
+                price:Number,
+                summary:
+                {
+                    type:String,
+                    trim:true ,
+                    required:[true,'The summary is required']           //trim only works for string types(it will remove all the white space
+                                // in the begining and in the end)
+                },
+                description:
+                {
+                    type:String,
+                    trim:true
+                },
+                imageCover:
+                {
+                    type:String,
+                    trim:true,
+                    required:[true,'a tour must have a imagecover']
+                },
+                images:[String],
+                createdate:
+                {
+                    type:Date  ,
+                    default:Date.now()  //this will give us the time in ms //it is a javascript function
+                },
+                startDates:[Date]              //an image which is a array of  string
+
+
+        })
