@@ -1,0 +1,43 @@
+we here also want to implement the query gte or gt or lt or lte
+?duration[$lte]=5&page=9
+this is a query string for lt or equals to
+//mongodb cnnot use the query string or the query object that we have right now
+ try{
+  console.log(req.query);
+  const query={...req.query};
+  const excluded_fields=['page','sort','limit','field'];
+  excluded_fields.forEach(el=>delete query[el]);
+  let querystr=JSON.stringify(query);
+   querystr=querystr.replace(/\b(gte|lte|gt|lt)\b/g,match=>`$${match}`);
+  querystr2=JSON.parse(querystr);                             //b is used for matching when the exact string is found 
+                                            //g is used for because it can occur one or more time
+  /*    const tours =await Tour.find(
+        {
+          duration:5,
+          difficulty:'easy'
+        });*/
+      //  const tours=await Tour.find().where('duration').equals('5').where('difficulty').equals('easy');
+      const tours =await Tour.find(querystr2);
+  //    console.log(tours);
+      res.status(200).json(
+        {
+
+          status:"true",
+          data:
+          {
+            data:tours
+          }
+        })
+      }
+      catch(err)
+      {
+        res.status(400).json(
+          {
+            status:"false",
+            data:
+            {
+              err
+            }
+
+          })
+      }
