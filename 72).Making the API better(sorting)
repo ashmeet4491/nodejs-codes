@@ -62,3 +62,74 @@ const tour5=await tours1;
 
   
 }
+this above code is for the ascending order
+for desuercending order just write in the query
+for two or more field we can use the below code
+try{
+  //console.log(req.query);
+  const query={...req.query};
+  const excluded_fields=['page','sort','limit','field'];
+  excluded_fields.forEach(el=>delete query[el]);
+  let querystr=JSON.stringify(query);
+   querystr=querystr.replace(/\b(gte|lte|gt|lt)\b/g,match=>`$${match}`);
+  let  tours1= Tour.find(JSON.parse(querystr));
+  if(req.query.sort)
+  {
+  //const str=req.query.sort;
+  
+
+    const str=req.query.sort.split(`,`).join(` `);
+    console.log(str);
+    tours1=tours1.sort(str);
+  }
+const tour5=await tours1;
+
+ //   console.log(tours1.sort(req.query.sort));
+    /*  {
+        if(price1.req.query.sort>price2.req.query.sort)
+        return -1;
+        if((price1.req.query.sort)<(price2.req.query.sort))
+        return 1;
+
+      });*/
+    
+                            //b is used for matching when the exact string is found 
+                                            //g is used for because it can occur one or more time
+  /*    const tours =await Tour.find(
+        {
+          duration:5,
+          difficulty:'easy'
+        });*/
+      //  const tours=await Tour.find().where('duration').equals('5').where('difficulty').equals('easy');
+  //   let tours = Tour.find(JSON.parse(querystr));
+     // if(req.query.sort)
+      //{
+      //  tours=tours.sort(req.query.sort);
+      //}
+
+  //    console.log(tours);
+      res.status(200).json(
+        {
+
+          status:"true",
+          data:
+          {
+            tour:tour5
+          }
+        })
+      }
+      catch(err)
+      {
+        res.status(400).json(
+          {
+            status:"false",
+            data:
+            {
+              err
+            }
+
+          })
+      }
+
+  
+}
