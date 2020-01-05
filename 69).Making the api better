@@ -1,0 +1,51 @@
+we can start the query by witing 
+?duraion=5&name=abc
+or other way of doing it
+There are many method of fetching a detail
+1).?duration=5&name=abc
+2).const tours =await Tour.find(
+        {
+          duration:5,
+          difficulty:'easy'
+        });
+3).const tours=await Tour.find().where('duration').equals('5').where('difficulty').equals('easy');
+4).const tours =await Tour.find(req.query);(we have to pass the req.query in it)
+Suppose we want exclude the special field names from our query string before we do the filtering
+ const query=req.query;
+ if we are setting something to query
+ thats means that the if we will change query then we req.query will always be modified
+ so we really need a hardcopy for this we will use
+  const query={...req.query};
+  these three fields will take the fields out of the object
+  and with curly braces we create a new object
+  It is going to contain all the key-value pair that was in the the object
+  console.log(req.query);
+  const query={...req.query};
+  const excluded_fields=['page','sort','limit','field'];
+  excluded_fields.forEach(el=>delete query[el]);
+  console.log(req.query,query);
+  const tours =await Tour.find(query);
+   res.status(200).json(
+        {
+
+          status:"true",
+          data:
+          {
+            data:tours
+          }
+        })
+      }
+      catch(err)
+      {
+        res.status(400).json(
+          {
+            status:"false",
+            data:
+            {
+              err
+            }
+
+          })
+      }
+
+ 
