@@ -1,0 +1,22 @@
+for choosing which field they want to get back in the response is called the limiting field
+The process of selecting a particular field name is called selecting
+if(req.query.fields)
+  {
+    const field=req.query.fields.split(`,`).join(` `);
+    console.log(field);
+    tours1=tours1.select(field);
+  }
+  else
+  {
+    tours1=tours1.select(`-__v`);
+  }
+  so we donot want to expose everything to the user so do the tourmodel1 and set the property of the select:false 
+  
+   createdate:
+                {
+                    type:Date  ,
+                    default:Date.now(),
+                    select:false  //this will give us the time in ms //it is a javascript function
+                },
+                so we can permanently hide this info from the user
+                
