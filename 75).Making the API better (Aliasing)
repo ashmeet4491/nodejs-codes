@@ -1,0 +1,16 @@
+this feature provides a aliase to the route
+so here we are going to provide a route that is simple and easy to implement
+we want to call this get_all_tours method
+
+router.route('/top-5-cheap').get(tour_controller2.get_all_tours);
+but before calling this method we have to specify the query string
+so we will use a middleware before it
+so the middleware is going to manipulate the query object
+exports.alias_top_tours=(req,res,next)=>
+{
+req.query.limit=5;
+req.query.sort='price,ratingsAverage';
+req.query.fields='name,price,ratinsAverage';
+next();
+}
+
