@@ -25,6 +25,21 @@ tours1=tour1.skip(10).limit(10);
   const skip=(page-1) * limit;
  tours1=tours1.skip(skip).limit(limit);//for page 2
 const tour5=await tours1;
+if we encounter a throw statement then it will automatically goes to the catch block
+const page=req.query.page * 1 || 1;//converting the string to the number
+  const limit=req.query.limit * 1  || 100;
+                                  //converting the string to the number
+  const skip=(page-1) * limit;
+ tours1=tours1.skip(skip).limit(limit);//for page 2
+  if(req.query.page)
+  {
+    const totaldoc=await Tour.countDocuments();
+    if(skip>=totaldoc)
+    {
+      throw new Error('this page has no documents');
+    }
+  }
+const tour5=await tours1;
 
 
 
