@@ -1,0 +1,30 @@
+it allows the users to select aparticular fields in case we have a lots of page
+suppose we have 1000 documents in a certain collection and lets assume we have 100 documents on a single page
+so it means it have 10 pages
+so how are we going to include our pagination using our query string so we will use the limit and the page fields
+?page=5&limit=10(so it simply mens page no 2 of limit 10)
+here is the limit of the document we want per page
+The method to do pagination is the skip method
+skip(2)skip contains a random number
+skip(2).limit(10)
+skip generallly means the amount of result that we want to skip before actually quering data
+?page=2&limit=10
+that means 1 to 10 are on the page 1 and 11 to 20 are on the page 2
+so this means that we want to skip 10results before we starts querying
+tours1=tour1.skip(10).limit(10);
+ const page=req.query.page * 1 || 1;//converting the string to the number
+  const limit=req.query.limit * 1  || 100;//converting the string to the number
+  //
+  //
+  //
+  //
+  code for pagination
+  const page=req.query.page * 1 || 1;//converting the string to the number
+  const limit=req.query.limit * 1  || 100;
+                                  //converting the string to the number
+  const skip=(page-1) * limit;
+ tours1=tours1.skip(skip).limit(limit);//for page 2
+const tour5=await tours1;
+
+
+
