@@ -1,0 +1,63 @@
+its like a filter object in mongodb
+where we use both the match keyword and the group keyword
+suppose we we have 5 tours and and we want to calculate the average rating
+the first attribute is the group by attribute
+.find is going to return a query and 
+.aggreagate is going to return a aggregate method
+exports.get_tour_stats= async(req,res)=>
+{
+    try
+    {
+        const stats= await Tour.aggregate(
+        [
+            {
+                $match:
+                {
+                    ratingsAverage:
+                    {
+                        $gte:4.5
+                    }
+                }
+        
+            },
+            {
+            $group:
+            {
+              _id:'null',//_id:{$toUpper:'$duration'}
+              total_tour:{$sum:1},
+              totalrating:{$sum:'$ratingsQuantity'},
+              ratingavg:{$avg:'$ratingsAverage' } ,
+               averageprice:{$avg:'$price'} ,
+                minprice:{$min:'$price'}                            //since we want to calculate the average of all the tours
+            }
+            },
+            {
+               $sort: {averageprice:1} 
+            },
+            {
+              $match:{_id:{$ne:'easy'}}  
+            }
+
+        ])
+    res.status(200).json(
+        {
+            status:"success",
+            data:
+            {
+                stats
+            }
+        })
+    }
+    
+    catch(err)
+    {
+        res.status(200).json(
+            {
+              status:"fail",
+              data:
+              {
+                  err
+              }
+            })
+    }
+}
