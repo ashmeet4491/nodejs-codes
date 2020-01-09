@@ -1,0 +1,10 @@
+we can use middleware to happen between the objects
+there are 4 types of middleaware in the first typ eof middleware is  express
+document query aggreagetors
+we wilalidation which l talk about document validation
+there is a m specifiesiddleware known as pre middleware and this is going to run before the event specified
+tour_schema.pre('save',function()
+        {
+           console.log(this);//the this document is going to work on the current document
+          
+        })
