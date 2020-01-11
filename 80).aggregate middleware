@@ -1,0 +1,11 @@
+this.pipeline().unshift()
+this.pipeline() is an array and so to add something in the begining of array we add unshift, and to add something in the last of array 
+we use shift
+ tour_schema.pre('aggregate',function (next) 
+        {
+          this.pipeline().unshift({
+          $match:{ secret_tour:{$ne:true}}
+          })
+         console.log(this.pipeline());
+        next();  
+        })
