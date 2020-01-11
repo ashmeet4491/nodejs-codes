@@ -1,0 +1,17 @@
+we never ever accept input data comimg from the user itself
+maxlength:[40,'a string must have 40 characters'],
+minlength:[10,'a string must have at least 10 character']
+this min length and max length is only for the length and not the number
+ enum:{
+ values:['easy','medium','difficult'],
+ message:'a difficulty can only be easy,medium or difficult'
+ }
+ it can also be written as 
+ enum:['easy','medium','difficult']
+ enum is just used for the string
+ but for showing the error message we will use the above conditions
+  min:[1,'rating must be atleast 1'],
+  max:[5,'ratinstring must be atmax 5']
+  this min and max is for the number for can also be used for the string.
+  these above are data validators
+  
