@@ -1,0 +1,24 @@
+a queary middlewre is that middleware which is going to execute after the find statement
+in find we are not going to process any documents .instead we are going to process the query
+Suppose we have some secret tours so we want a particular Vip group of people to have access to that tours
+tour_schema.pre('find',function(next) {
+          this.find({secret_tour:{$ne;true}});
+          next();
+        })
+        and this here points to query not to the documents
+          tour_schema.pre(/^find/,function(next) {
+          this.find({secret_tour:{$ne:true}});
+          next();
+        })
+         tour_schema.pre(/^find/,function(next) {
+          this.find({secret_tour:{$ne:true}});
+          this.start=Date.now();
+          next();
+        })
+        here above we are using regular expressions so it will be triggered for all the statements starting with find
+the post method have access to all the documents that we are going to use
+tour_schema.post(/^find/,function(docs,next) {
+          console.log(`${Date.now()-this.start}`);
+          console.log(docs);
+          next();
+        }) 
