@@ -8,4 +8,12 @@ validate uses the callback function
  }
  this function will return either true or false 
  the 'this' keyword is going to point to the current document
- 
+ go t0 validators github open the first link where all the custom validorts are used
+ u can grab these libraries and plug them into validators
+ so before using validators 
+just do
+install npm validator -g(include -g for global)
+if this is not working then u can install python in extension
+
+we will define breakpoints in the code such that our codes stops running
+it will freeze so we can 
