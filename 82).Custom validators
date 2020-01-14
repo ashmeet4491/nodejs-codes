@@ -1,0 +1,11 @@
+we can also built our custom validators
+a VALIDATOR is a function
+for validation we use the validate form 
+validate uses the callback function
+ validate:function (val) 
+ {
+ return val<this.price;
+ }
+ this function will return either true or false 
+ the 'this' keyword is going to point to the current document
+ 
