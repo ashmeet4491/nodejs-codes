@@ -1,0 +1,7 @@
+npm i ndb --global
+//if the above statement is not performing then 
+install python extension
+and npm run debug
+ "debug":"ndb server6.js"
+ then a new window will appear
+ we can use that window for error debugging
