@@ -1,0 +1,7 @@
+There is a error handling middleware through which we can easily handle an error o this kind 
+like a user requested a URL which is not available so this kind of middleware do work
+We have to give a middleware a four  arguments so that the express automaticaly recognizes it 
+we will provide it with four arguments named as (err,req,res,next)
+then we will have to create an error by using  an Error constructor(buildin)
+
+
