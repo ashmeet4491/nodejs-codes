@@ -1,0 +1,16 @@
+what if we have unhandled routes
+how can we manage them
+we will use 
+app.all 
+this is for all the methods get,post,patch,and delete
+the order of the middleware matters a lot in middleware
+app.all('*',(req,res,next)=>
+{
+    res.status(400).json(
+        {
+            status:'fail',
+            message: `can't find requested ${req.originalUrl}`
+
+        })
+
+})
